@@ -15,14 +15,12 @@ import { CreateChallengeDto } from './dto/create-challenge.dto.js';
 import { UpdateChallengeDto } from './dto/update-challenge.dto.js';
 import { AuthGuard } from '../auth/auth.guard.js';
 import { Roles } from '../auth/roles.decorator.js';
-import {
-  AuthenticatedUser,
-  User,
-} from '../auth/authenticated-user.decorator.js';
+import { AuthenticatedUser } from '../auth/authenticated-user.decorator.js';
+import type { User } from '../auth/authenticated-user.decorator.js';
 
 @Controller('challenges')
 @UseGuards(AuthGuard)
-@Roles('manager')
+@Roles('Manager')
 @UsePipes(new ValidationPipe({ whitelist: true, transform: true }))
 export class ChallengesController {
   constructor(private readonly challengesService: ChallengesService) {}
